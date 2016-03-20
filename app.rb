@@ -6,6 +6,8 @@ require 'coffee-script'
 require 'execjs'
 require 'slim'
 
+require 'rerun'
+
 class App < Sinatra::Base
   set :environment, Sprockets::Environment.new
 
