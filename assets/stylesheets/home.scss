@@ -1,7 +1,26 @@
 body {
-  background-color: GreenYellow;
+  background-color: LightGreen;
   text-align: center;
   font-size: 30px;
-  color: white;
-  padding-top: 150px;
+  margin: 0;
+  font-family: Arial;
+}
+#pets-filter {
+  width: 100%;
+  background-color: #fff;
+  min-height: 300px;
+}
+.pet {
+  display: inline-block;
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+  font-size: 12px;
+  text-align: left;
+}
+.pet-name {
+  text-align: center;
+}
+.note {
+  font-size: 10px;
 }

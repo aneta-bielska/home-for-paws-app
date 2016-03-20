@@ -1,13 +1,19 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'rack'
 
-gem 'slim'
 gem 'sprockets'
-gem 'uglifier'
+gem 'react-jsx-sprockets'
+gem 'slim'
 gem 'sass'
 gem 'coffee-script'
+gem 'uglifier'
 gem 'execjs'
+gem 'json'
 
 gem 'rerun'
+gem 'pry'
+
+
