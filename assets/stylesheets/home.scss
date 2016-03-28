@@ -1,16 +1,15 @@
 body {
   background-color: LightGreen;
   text-align: center;
-  font-size: 30px;
   margin: 0;
   font-family: Arial;
 }
-#pets-filter {
+#animals-filter {
   width: 100%;
   background-color: #fff;
   min-height: 300px;
 }
-.pet {
+.animal {
   display: inline-block;
   background-color: #fff;
   padding: 20px;
@@ -18,9 +17,15 @@ body {
   font-size: 12px;
   text-align: left;
 }
-.pet-name {
+.animal-name {
   text-align: center;
 }
 .note {
   font-size: 10px;
+}
+.filter-title {
+  font-size: 30px;
+}
+label {
+  margin-left: 15px;
 }

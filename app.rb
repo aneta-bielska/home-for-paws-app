@@ -3,9 +3,10 @@ require 'sinatra/json'
 require 'sprockets'
 require 'react-jsx-sprockets'
 require 'slim'
-
 require 'pry'
 require 'rerun'
+
+require './config/datamapper.rb'
 
 class App < Sinatra::Base
   set :environment, Sprockets::Environment.new
@@ -26,19 +27,43 @@ class App < Sinatra::Base
   end
 
   # temporary example api
-  get "/api/pets.json" do
-    dog = { id: 11, name: "Nasus", pet_type: "dog", date_of_birth: "2010-01-01", gender: "male"}
-    cat = { id: 22, name: "Nyan",  pet_type: "cat", date_of_birth: "2011-02-02", gender: "female"}
-    rat = { id: 55, name: "Brain", pet_type: "rat", date_of_birth: "1995-03-03", gender: "male"}
+  get "/api/animals.json" do
+    compact_params(params)
 
-    case params[:pet_type]
-    when 'cat' then data = [cat]
-    when 'dog' then data = [dog]
-    when 'other' then data = [rat]
-    else
-      data = [cat,dog,rat]
+    animal_params = params[:animals].to_h
+    breed_params = params[:breeds].to_h.map { |k,v| [Animal.breed.send(k), v] }.to_h
+    shelter_params = params[:shelters].to_h.map { |k,v| [Animal.shelter.send(k), v] }.to_h
+    age_param = animal_params.delete('age')
+
+    all_params = [animal_params, breed_params, shelter_params, processed_age(age_param)].inject(&:merge)
+
+    json Animal.all(all_params)
+  end
+
+  private
+
+  def compact_params(parameters)
+    return unless parameters
+
+    parameters.delete_if do |k, v|
+      compact_params(v) if v.kind_of? Hash
+      v == 'all' || v.empty?
     end
+  end
 
-    json data
+  def processed_age(age_param)
+    now = Date.today
+    case age_param
+    when 'puppy'
+      {:date_of_birth.gt => now - 365}
+    when 'young'
+      {:date_of_birth.gt => now - 365*5, :date_of_birth.lt => now - 365}
+    when 'middle'
+      {:date_of_birth.gt => now - 365*8, :date_of_birth.lt => now - 365*5}
+    when 'old'
+      {:date_of_birth.lt => now - 365*8}
+    else
+      {}
+    end
   end
 end
