@@ -1,5 +1,5 @@
 require 'data_mapper'
-require './animal.rb'
+require './models/animal.rb'
 
 class Shelter
   include DataMapper::Resource

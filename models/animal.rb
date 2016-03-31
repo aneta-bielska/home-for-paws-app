@@ -1,6 +1,6 @@
 require 'data_mapper'
-require './shelter.rb'
-require './breed.rb'
+require './models/shelter.rb'
+require './models/breed.rb'
 
 class Animal
   include DataMapper::Resource
