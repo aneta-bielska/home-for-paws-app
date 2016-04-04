@@ -1,31 +1,6 @@
-body {
-  background-color: LightGreen;
-  text-align: center;
-  margin: 0;
-  font-family: Arial;
-}
-#animals-filter {
-  width: 100%;
+.landing-page {
   background-color: #fff;
-  min-height: 300px;
 }
-.animal {
-  display: inline-block;
-  background-color: #fff;
-  padding: 20px;
-  margin: 10px;
-  font-size: 12px;
-  text-align: left;
-}
-.animal-name {
-  text-align: center;
-}
-.note {
-  font-size: 10px;
-}
-.filter-title {
-  font-size: 30px;
-}
-label {
-  margin-left: 15px;
+.filter-link {
+  font-size: 26px;
 }

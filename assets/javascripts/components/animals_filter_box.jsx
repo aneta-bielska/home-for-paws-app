@@ -83,6 +83,8 @@ $(document).ready(function() {
     render: function() {
       return (
         <div id='animals-filter'>
+          <p className="filter-title">Filter animals</p>
+
           <form className="animals-filter-form" onSubmit={this.handleSubmit}>
 
             <label>adoption_status:</label>
@@ -189,7 +191,6 @@ $(document).ready(function() {
     render: function() {
       return (
         <div>
-          <p className="filter-title">Filter animals</p>
           <AnimalsFilter onAnimalsFilterSubmit={this.handleAnimalsFilterSubmit}/>
           <AnimalsList data={this.state.data} />
         </div>

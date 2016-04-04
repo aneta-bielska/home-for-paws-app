@@ -23,7 +23,11 @@ class App < Sinatra::Base
   end
 
   get "/" do
-    slim :index
+    slim :home
+  end
+
+  get "/animals" do
+    slim :'animals/index'
   end
 
   # temporary example api
