@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   var AnimalsList = React.createClass({
     render: function() {
-      var  filteredAnimals  = this.props.data.map(function(animal) {
+      var  filteredAnimals = this.props.data.map(function(animal) {
         return (
           <div className='animal' key={animal.id}>
             <p className='animal-name'><b>{animal.name}</b></p>
@@ -36,6 +36,9 @@ $(document).ready(function() {
     handleAgeChange: function(e) {
       this.setState({age: e.target.value});
     },
+    handleBreedNameChange: function(e) {
+      this.setState({breed_id: e.target.value});
+    },
 
     // breeds
     handleAnimalTypeChange: function(e) {
@@ -46,9 +49,6 @@ $(document).ready(function() {
     },
     handleSizeChange: function(e) {
       this.setState({size: e.target.value});
-    },
-    handleBreedNameChange: function(e) {
-      this.setState({breed_id: e.target.value});
     },
 
     // shelters
@@ -63,11 +63,11 @@ $(document).ready(function() {
       var adoption_status = this.state.adoption_status;
       var gender = this.state.gender;
       var age = this.state.age;
+      var breed_id = this.state.breed_id;
       // breeds
       var animal_type = this.state.animal_type;
       var color = this.state.color;
       var size = this.state.size;
-      var breed_id = this.state.breed_id;
       // shelters
       var city = this.state.city;
 
@@ -167,6 +167,10 @@ $(document).ready(function() {
       return {data: []};
     },
 
+    componentDidMount: function() {
+      this.handleAnimalsFilterSubmit();
+    },
+
     handleAnimalsFilterSubmit: function(data) {
       $.ajax({
         url: this.props.url,
@@ -192,7 +196,6 @@ $(document).ready(function() {
       );
     }
   });
-
 
   ReactDOM.render(
     <AnimalsFilterBox url="/api/animals.json" />,
