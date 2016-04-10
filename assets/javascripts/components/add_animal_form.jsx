@@ -26,6 +26,9 @@ $(function() {
       return {};
     },
 
+    handleNameChange: function(e) {
+      this.setState({name: e.target.value});
+    },
     handleAdoptionStatusChange: function(e) {
       this.setState({adoption_status: e.target.value});
     },
@@ -33,7 +36,7 @@ $(function() {
       this.setState({gender: e.target.value});
     },
     handleAgeChange: function(e) {
-      this.setState({age: e.target.value});
+      this.setState({date_of_birth: e.target.value});
     },
     handleBreedNameChange: function(e) {
       this.setState({breed_id: e.target.value});
@@ -47,35 +50,33 @@ $(function() {
     handleSizeChange: function(e) {
       this.setState({size: e.target.value});
     },
-    handleCityChange: function(e) {
-      this.setState({city: e.target.value});
-    },
-
 
     handleSubmit: function(e) {
       e.preventDefault();
+
+      var name = this.state.name;
+      var shelter_id = this.props.shelterId;
       var adoption_status = this.state.adoption_status;
       var gender = this.state.gender;
-      var age = this.state.age;
+      var date_of_birth = this.state.date_of_birth;
       var breed_id = this.state.breed_id;
       var animal_type = this.state.animal_type;
       var color = this.state.color;
       var size = this.state.size;
-      var city = this.state.city;
 
       this.props.onAnimalsFilterSubmit(
         {
-          animals: {
+          animal: {
+            shelter_id: shelter_id,
+            name: name,
             adoption_status: adoption_status,
             gender: gender,
-            age: age,
+            date_of_birth: date_of_birth,
             breed_id: breed_id,
             shelter_id: shelter_id,
             animal_type: animal_type,
             color: color,
-            size: size },
-          shelters: {
-            city: city
+            size: size
           }
         }
       );
@@ -84,13 +85,15 @@ $(function() {
     render: function() {
       return (
         <div id='animals-filter'>
-          <p className="filter-title">Filter animals</p>
+          <p className="filter-title">Add animal</p>
 
-          <form className="animals-filter-form" onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
+            <label>name:</label>
+            <input type="text" onChange={this.handleNameChange}/>
 
             <label>adoption_status:</label>
             <select onChange={this.handleAdoptionStatusChange}>
-              <option value="all">all</option>
+              <option></option>
               <option value="today">arrived today</option>
               <option value="preparation">preparation for adoption</option>
               <option value="ready">ready for adoption</option>
@@ -99,32 +102,25 @@ $(function() {
 
             <label>gender:</label>
             <select onChange={this.handleGenderChange}>
-              <option value="all">all</option>
+              <option></option>
               <option value="f">female</option>
               <option value="m">male</option>
             </select>
 
-            <label>age:</label>
-            <select onChange={this.handleAgeChange}>
-              <option value="all">all</option>
-              <option value="puppy">less than 1</option>
-              <option value="young">between 1 and 5</option>
-              <option value="middle">between 5 and 8</option>
-              <option value="old">more than 8</option>
-            </select>
-
+            <label>date_of_birth:</label>
+            <input type="date" placeholder="YYYY-MM-DD" onChange={this.handleAgeChange}/>
 
             <label>animal_type:</label>
             <select onChange={this.handleAnimalTypeChange}>
-              <option value="all">all</option>
-              <option value="cat">cats</option>
-              <option value="dog">dogs</option>
-              <option value="rat">rats</option>
+              <option></option>
+              <option value="cat">cat</option>
+              <option value="dog">dog</option>
+              <option value="rat">rat</option>
             </select>
 
             <label>color:</label>
             <select onChange={this.handleColorChange}>
-              <option value="all">all</option>
+              <option></option>
               <option value="black">black</option>
               <option value="white">white</option>
               <option value="brown">brown</option>
@@ -133,7 +129,7 @@ $(function() {
 
             <label>size:</label>
             <select onChange={this.handleSizeChange}>
-              <option value="all">all</option>
+              <option></option>
               <option value="s">small</option>
               <option value="m">medium</option>
               <option value="l">large</option>
@@ -141,7 +137,7 @@ $(function() {
 
             <label>breed:</label>
             <select onChange={this.handleBreedNameChange}>
-              <option value="all">all</option>
+              <option></option>
               <option value="1">Egyptian Werewolf in Armor</option>
               <option value="2">Star Cat</option>
               <option value="3">Domestic Cat</option>
@@ -149,16 +145,8 @@ $(function() {
               <option value="5">Just A Doge</option>
             </select>
 
-
-            <label>city:</label>
-            <select onChange={this.handleCityChange}>
-              <option value="all">all</option>
-              <option value="bialystok">Białystok</option>
-              <option value="hajnowka">Hajnówka</option>
-            </select>
-
             <br /><br />
-            <input type="submit" value="Filter" />
+            <input type="submit" value="Add" />
           </form>
         </div>
       );
@@ -171,14 +159,14 @@ $(function() {
     },
 
     componentDidMount: function() {
-      this.handleAnimalsFilterSubmit();
+      this.handleAnimalsFilterSubmit({animal: {shelter_id: this.props.shelterId}});
     },
 
     handleAnimalsFilterSubmit: function(data) {
       $.ajax({
         url: this.props.url,
         dataType: 'json',
-        type: 'GET',
+        type: 'POST',
         data: data,
         success: function(data) {
           this.setState({data: data});
@@ -190,21 +178,24 @@ $(function() {
     },
 
     render: function() {
+
       return (
         <div>
-          <AnimalsFilter onAnimalsFilterSubmit={this.handleAnimalsFilterSubmit}/>
-          <AnimalsList data={this.state.data} />
+          <AnimalsFilter onAnimalsFilterSubmit={this.handleAnimalsFilterSubmit} shelterId={this.props.shelterId}/>
+          <AnimalsList data={this.state.data}/>
         </div>
       );
     }
   });
 
-  var app = document.getElementById('app');
+  var addanimalform = document.getElementById('addanimalform');
 
-  if(app) {
+  if(addanimalform) {
+    var shelterId = addanimalform.getAttribute('data-shelter-id');
+
     ReactDOM.render(
-      <AnimalsFilterBox url="/api/animals.json" />,
-      app
+      <AnimalsFilterBox url="/api/shelter-animals" shelterId={shelterId}/>,
+      addanimalform
     );
   }
 

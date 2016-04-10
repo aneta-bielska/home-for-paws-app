@@ -2,3 +2,7 @@
   p: a.filter-link href="/animals" filter animals
   p landing page
   p: img src="http://www.lovelosstransition.com/wp-content/uploads/2016/01/under_construction_dog.png"
+.shelters
+  p Shelters
+  - @shelters.each do |shelter|
+    p: b: a href="/shelters/#{shelter.id}"= shelter.name

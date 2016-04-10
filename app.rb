@@ -23,11 +23,17 @@ class App < Sinatra::Base
   end
 
   get "/" do
+    @shelters = Shelter.all
     slim :home
   end
 
   get "/animals" do
     slim :'animals/index'
+  end
+
+  get "/shelters/:id" do
+    @shelter = Shelter.get(params[:id])
+    slim :'shelters/show'
   end
 
   # temporary example api
@@ -42,6 +48,11 @@ class App < Sinatra::Base
     all_params = [animal_params, breed_params, shelter_params, processed_age(age_param)].inject(&:merge)
 
     json Animal.all(all_params)
+  end
+
+  post '/api/shelter-animals' do
+    Animal.create(params[:animal])
+    json Animal.all(shelter_id: params[:animal][:shelter_id])
   end
 
   private

@@ -10,6 +10,9 @@ class Animal
   property :adoption_status, String
   property :gender, String
   property :date_of_birth, Date
+  property :color, String
+  property :size, String
+  property :animal_type, String
 
   belongs_to :shelter
   belongs_to :breed

@@ -3,10 +3,8 @@ head
   script src="http://code.jquery.com/jquery-1.11.3.min.js"
   script src="https://fb.me/react-0.14.7.js"
   script src="https://fb.me/react-dom-0.14.7.js"
-  link rel="stylesheet" href="assets/app.css"
-  script src="assets/app.js"
+  link rel="stylesheet" href="/assets/app.css"
 body
-  p
-    span: img src="http://medfordsun.com/wp-content/uploads/2014/11/dog-paw.png" height="20"
-    span.title Home for paws
+  == slim :header
   == yield
+  script src="/assets/app.js"
