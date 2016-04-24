@@ -1,6 +1,161 @@
-.landing-page {
-  background-color: #fff;
+* {
+  font-family: 'Open Sans', sans-serif;
 }
-.filter-link {
-  font-size: 26px;
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: black;
+}
+.container {
+  margin: 0 20%;
+}
+.pull-right {text-align: right;float: right;}
+.landing-photo {
+  position: relative;
+  width: 100%;
+}
+.landing-photo-content {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 60%;
+  font-size: 10px;
+}
+.mini-header {
+  font-size: 9px;
+  font-weight: bold;
+  display: inline-block;
+}
+.img-landing {
+  width: 100%;
+}
+.menu-item {
+  display: inline-block;
+  padding: 12px;
+}
+.main-header {
+  font-size: 15px;
+  font-weight: bold;
+}
+.finder {
+  background-color: #9ab91e;
+}
+form {
+  margin-top: 100px;
+  margin-left: 300px;
+  bottom: 0;
+  background-color: white;
+  display: inline-block;
+  padding: 50px 40px;
+}
+input {
+  background-color: #f6f5f3;
+  padding: 10px;
+}
+
+.facts-list {
+  background-color: #4dcadc;
+  text-align: center;
+  color: white;
+}
+.divider {
+  border-top: 1px solid #9ab91e;
+}
+.new-arrivals {
+  text-align: center;
+  background-color:  white;
+
+}
+.gallery-item {
+  display: inline-block;
+  width: 200px;
+  background-color: #f6f5f3;
+  margin: 20px;
+}
+.gallery-item-desc {
+  min-height: 70px;
+}
+.new-arrivals-gallery {
+  padding-bottom: 80px;
+
+}
+img.arrival-img {
+  width: 100%;
+}
+.logo-red {
+  color: Gainsboro;
+}
+.facts {
+  padding-bottom: 80px;
+}
+.fact {
+  display: inline-block;
+  padding: 20px;
+  width: 120px;
+}
+.fact-num {
+  font-size: 40px;
+}
+.get-inline {
+
+}
+.shelters {
+  text-align: center;
+}
+.shelter-list {
+  padding-bottom: 80px;
+}
+.shelter {
+  display: inline-block;
+  background-color: #f6f5f3;
+  margin: 10px;
+  padding: 30px 20px;
+  width: 15%;
+  font-size: 24px;
+  color: white;
+}
+.header-title {
+  text-align: center;
+  font-size: 28px;
+  padding: 80px 0;
+  font-weight: bold;
+}
+footer {
+  background-color: #322223;
+  color: #a39e9b;
+  padding-top: 60px;
+}
+.sub-footer {
+  background-color: #1f1013;
+  padding: 20px;
+}
+* { margin:0; padding:0; }
+html, body { height: 100%; }
+#wrap {min-height: 100%;}
+#main {overflow:auto; padding-bottom: 80px;}
+footer {position: relative;
+  margin-top: -80px;
+  height: 80px;
+  clear:both;}
+/*Opera Fix*/
+body:before {
+  content:"";
+  height:100%;
+  float:left;
+  width:0;
+  margin-top:-32767px;}
+/*  end: Sticky Footer Solution   */
+
+.footer-light {
+  color: #fdfffe;
+}
+.footer-medium {
+  color: #b7adac;
+}
+.footer-dark {
+  color: #7d7c77;
+}
+.item {
 }

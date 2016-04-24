@@ -4,7 +4,10 @@ head
   script src="https://fb.me/react-0.14.7.js"
   script src="https://fb.me/react-dom-0.14.7.js"
   link rel="stylesheet" href="/assets/app.css"
+  link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'
 body
-  == slim :header
-  == yield
+  #wrap
+    #main
+      == slim :header
+      == yield
   script src="/assets/app.js"
