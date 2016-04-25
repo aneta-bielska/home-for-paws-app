@@ -70,7 +70,6 @@ $(function() {
             gender: gender,
             age: age,
             breed_id: breed_id,
-            shelter_id: shelter_id,
             animal_type: animal_type,
             color: color,
             size: size },
