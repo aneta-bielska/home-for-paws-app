@@ -70,11 +70,13 @@ $(function() {
             gender: gender,
             age: age,
             breed_id: breed_id,
-            animal_type: animal_type,
             color: color,
             size: size },
           shelters: {
             city: city
+          },
+          breeds: {
+            animal_type: animal_type
           }
         }
       );

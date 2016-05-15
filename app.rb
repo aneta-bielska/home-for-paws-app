@@ -24,6 +24,7 @@ class App < Sinatra::Base
 
   get "/" do
     @shelters = Shelter.all
+    @animals = Animal.all(adoption_status: 'today', limit: 4)
     slim :home
   end
 

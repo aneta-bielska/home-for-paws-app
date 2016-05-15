@@ -1,17 +1,26 @@
+<!-- It is cool about slim you can wtire plain html code ^-^ -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
 
-ul.mini-header.menu
-  li.menu-item.pull-left.logo-red LOG IN
-  li.menu-item.pull-left STH ELSE
-ul.mini-header.menu.pull-right
-  li.menu-item FB
-  li.menu-item TW
-.divider
-ul.main-header.menu
-  li.menu-item.pull-left
-    a href="/" LOGO
-  li.menu-item.pull-left
-    a href="/" HOME 4 PAWS
-  li.menu-item.pull-right.finder
-    a href="/animals" FIND ANIMAL
-  li.menu-item.pull-right ABOUT
-  li.menu-item.pull-right.dropdown ELSE
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Home 4 Paws</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/animals">Find animal <span class="sr-only">(current)</span></a></li>
+        <li><a href="/">About</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">LOG IN</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

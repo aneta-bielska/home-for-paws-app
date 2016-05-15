@@ -1,41 +1,16 @@
 .landing-photo
   img.img-landing src="/images/land1.jpg"
   .container.landing-photo-content
-
-    form
-      input placeholder=("sth sth") type="text"
-      br
-      br
-      input placeholder=("sth sth") type="text"
-      br
-      br
-      input placeholder=("sth sth") type="text"
-      br
-      br
-      input placeholder=("sth sth") type="text"
-      br
-      br
-      input type="button" value="SEARCH"
+    .camption FIND A PET
 .new-arrivals
   .container
     .header-title JUST ARRIVED
     .new-arrivals-gallery
-      .gallery-item.item
-        div
-          img.arrival-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/BraxtonPuggle-edit1.jpg/600px-BraxtonPuggle-edit1.jpg" /
-        .gallery-item-desc Doge
-      .gallery-item.item
-        div
-          img.arrival-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/BraxtonPuggle-edit1.jpg/600px-BraxtonPuggle-edit1.jpg" /
-        .gallery-item-desc Doge
-      .gallery-item.item
-        div
-          img.arrival-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/BraxtonPuggle-edit1.jpg/600px-BraxtonPuggle-edit1.jpg" /
-        .gallery-item-desc Doge
-      .gallery-item.item
-        div
-          img.arrival-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/BraxtonPuggle-edit1.jpg/600px-BraxtonPuggle-edit1.jpg" /
-        .gallery-item-desc Doge
+      - @animals.each do |animal|
+        .gallery-item.item
+          div
+            img.arrival-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/BraxtonPuggle-edit1.jpg/600px-BraxtonPuggle-edit1.jpg" /
+          .gallery-item-desc = animal.name
 .facts-list
   .container
     .header-title INTERESTING FACTS
@@ -56,20 +31,7 @@
   .container
     .header-title SHELTERS
     .shelter-list
-      .shelter.item shelter1
-      .shelter.item shelter2
-      .shelter.item shelter3
-      .shelter.item shelter4
-      .shelter.item shelter1
-      .shelter.item shelter2
-      .shelter.item shelter3
-      .shelter.item shelter4
-      .shelter.item shelter1
-      .shelter.item shelter2
-      .shelter.item shelter3
-      .shelter.item shelter4
-footer
-  .container
-    .footer-light Home 4 paws
-    .footer-medium about | contact | filter
-    .footer-dark 2016
+      -@shelters.each do |shelter|
+        .shelter.item
+          a href="/shelters/#{shelter.id}" = shelter.name
+
