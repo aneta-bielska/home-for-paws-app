@@ -8,7 +8,8 @@ $(function() {
             <p className='animal-name'><b>{animal.name}</b></p>
             <p>gender: {animal.gender}</p>
             <p>status: {animal.adoption_status}</p>
-            <p>age: {getAge(animal.date_of_birth)}</p>
+            <p>type: {animal.animal_type}</p>
+            <p>age: {animal.age}</p>
           </div>
         );
       });
@@ -204,7 +205,7 @@ $(function() {
 
   if(app) {
     ReactDOM.render(
-      <AnimalsFilterBox url="/api/animals.json" />,
+      <AnimalsFilterBox url="http://home-for-paws-api.herokuapp.com/animals.json" />,
       app
     );
   }
