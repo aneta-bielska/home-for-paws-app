@@ -31,3 +31,4 @@ end
 gem 'rerun'
 gem 'pry'
 gem 'rake'
+gem 'nokogiri'
