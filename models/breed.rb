@@ -9,6 +9,4 @@ class Breed
   property :animal_type, String
 
   has n, :animals
-
-  validates_within :size, set: [ 's', 'm', 'l' ]
 end
