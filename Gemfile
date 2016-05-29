@@ -30,3 +30,4 @@ end
 
 gem 'rerun'
 gem 'pry'
+gem 'rake'
